@@ -1,0 +1,14 @@
+,Name,Desc,FDT,Sv
+15,ALU02519332,240W-A ONT traffic down when down/up pon with frame length 1527~1536,1325 : HDBU-ONT-SHA SnowWhiteand7,3
+26,ALU02579971,"[CMCCBMT][CP4]Up/DownloadDiagnosticsState always show ""Complete"" with nonexiste file/unreachable URL",1325 : HDBU-ONT-SHA SnowWhiteand7,3
+30,ALU02586208,[HDR6101][CU_BMT][XG-140W-UB]LAN device ping GW fail when optical power is lower for sometime,1325 : HDBU-ONT-SHA SnowWhiteand7,3
+33,ALU02591228,[HDR6101a][XG140WUB][XXSB] 2.4G TCP throughput is too low with adjacent channel interference.,1601 : HDBU-WIFI-SHA WIFI PEAK,3
+40,ALU02601512,[6101a][aWiFi][E-140W-TF][SCSA]SSID3's status will be changed after changing SSID1's name,1601 : HDBU-WIFI-SHA WIFI PEAK,3
+41,ALU02601529,[6101a][aWiFi][E-140W-TF][SCSA]SSID3' name will be changed after changing SSID1's name,1601 : HDBU-WIFI-SHA WIFI PEAK,3
+42,ALU02602303,[HDR6101A][E-140W-TF][SCSA]5G HT80 DL throughput is lower than 61ChinaP7 at high attenuation,1601 : HDBU-WIFI-SHA WIFI PEAK,3
+47,ALU02607751,[6101a][aWiFi][E-140W-TF][SCSA]The PC can searching on line without authentication through aWiFi fun,1325 : HDBU-ONT-SHA SnowWhiteand7,3
+51,ALU02610902,[HDR62C][CMCC][XG/XS-140W-MC]BytesReceived values isn't 0 when testHTTP download with nonexiste file,1325 : HDBU-ONT-SHA SnowWhiteand7,3
+52,ALU02611996,[HDR62][XG-140W-MC/XXSC] wifi 2.4G UL/DL throughput is lower than XG140WUB at high att,1601 : HDBU-WIFI-SHA WIFI PEAK,3
+53,ALU02612537,[XGSPON_LOAD][XG140WMC][HDR62C][XXSB]After warm reboot repeatedly Toshiba flash make onu cannot up.,unknown,3
+60,ALU02620637,[HDR6101China][G140WC][XXSC]The function of L2TP does not work when create pppoe route wan.,1325 : HDBU-ONT-SHA SnowWhiteand7,3
+115,ALU02648845,"Support new SFPs of 3FE46899AB, 3FE46900AB and 3FE46901AB/AC on Nokia ONUs",1252 : HDBU-ONT-SHA Hungry,2
