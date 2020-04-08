@@ -4,7 +4,7 @@ import csv
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
+
 
 def get_data(project):
     # Make an API call, and store the response.
@@ -74,8 +74,9 @@ def filter(FRs):
 
 
 ####################################################################
-project_no=input("please input your project no such as hdr6301:")
+project_no=input("please input your project No. such as hdr6301:")
 in_project=project_no.strip().lower()
+
 print('geting data from CQ....and save to file'+in_project)
 
 #frfilepath=get_data(in_project)
