@@ -8,8 +8,7 @@ import matplotlib.pyplot as plt
 def get_data(project):
     # Make an API call, and store the response.
     url = 'http://aww.sh.bel.alcatel.be/tools/dslam/cm/sqlrep/cgi-bin/csv.cgi?r=xls_fr_screening_25&p0='+project+'&p99=11&p41=FR'
-    #password=input('your password:')
-    password="XXaqsgs%2"
+    password=input('your password:')
     r = requests.get(url,auth=('dingfany',password))
     frfilepath='FR_table_'+project
     f=open(frfilepath, 'w')
