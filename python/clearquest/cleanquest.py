@@ -32,7 +32,7 @@ def duidiebar(fdt_list,fdt_sv1_counter_list,fdt_sv2_counter_list,fdt_sv3_counter
     plt.xticks(rotation=90)    # 设置横坐标标签旋转角度。
     plt.tight_layout()
     plt.savefig("FDT vs sev FRs.svg",format='svg')
-   # plt.show()
+    plt.show()
 
 def barbar(fdt_list,fdt_sv1_counter_list,fdt_sv2_counter_list,fdt_sv3_counter_list):
     x =list(range(len(fdt_list)))
@@ -70,6 +70,11 @@ def filter(FRs):
     print(filtered)
     return filtered
 
+def plot_simple(filtered):
+    grouped_fdt=filtered.groupby(['FDT'])
+    #直接用value_counts,plot pandas
+    grouped_fdt['Sv'].value_counts().unstack().plot(kind='barh', figsize=(20, 4))
+    plt.show()
 
 
 ####################################################################
@@ -87,6 +92,8 @@ clean_data(FRs)
 filtered=filter(FRs)
 filtered.to_csv('aferfilter.csv')
 
+
+#method1,pandos don't support plot complext directly, manually draw
 grouped_fdt=filtered.groupby(['FDT'])
     
 fdt_list=[]
@@ -105,8 +112,16 @@ fdt_no_list=[]
 for fdtfullname in fdt_list:
     fdt_no_list.append(fdtfullname.split(":")[0])
 
-#用堆叠的图显示
+# #用堆叠的图显示
 duidiebar(fdt_no_list,fdt_sv1_counter_list,fdt_sv2_counter_list,fdt_sv3_counter_list)
+
+#method 2,using groupby and groupby again.
+#plot_simple(filtered)
+
+#method 3,using pivot table.
+#print(pd.pivot_table(filtered, index=['FDT','Sv'],aggfunc='count'))
+
+
 
 
 
