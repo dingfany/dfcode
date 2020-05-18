@@ -27,7 +27,7 @@ def duidiebar(fdt_list,fdt_sv1_counter_list,fdt_sv2_counter_list,fdt_sv3_counter
     #plt.xlabel("FDT")
     plt.ylabel('FR counter')
     plt.xticks(range(len(x)), fdt_list)
-    plt.legend(title='Sev', loc='upper left')
+    plt.legend(title='Sev', loc='upper right')
     plt.xticks(rotation=90)    # 设置横坐标标签旋转角度。
     plt.tight_layout()
     plt.savefig("FDT vs sev FRs.svg",format='svg')
