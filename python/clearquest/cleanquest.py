@@ -67,7 +67,7 @@ def filter(FRs):
     filtered_by_onttype = FRs[FRs.ONTTYPE.isin(list(aont.ONT_CHINA))]
     filtered_by_frstatus= filtered_by_onttype[filtered_by_onttype.St.isin(frstatus)]
     filtered=filtered_by_frstatus.loc[:,['Name','Desc','FDT','Sv']]
-    print(filtered)
+#    print(filtered)
     return filtered
 
 def plot_simple(filtered):
@@ -95,7 +95,8 @@ else:
 
 if remote == '1':
     frfilepath=get_data(in_project)
-else:
+else:  
+    print('get from LOCAL!')
     frfilepath="FR_table_"+in_project
 
 
