@@ -11,6 +11,7 @@ def get_data(project):
     password=input('your password:')
     r = requests.get(url,auth=('dingfany',password))
     frfilepath='FR_table_'+project
+    print('geting data from CQ....and save to file'+frfilepath)
     f=open(frfilepath, 'w')
     f.write(r.text)
     f.close()
@@ -76,14 +77,28 @@ def plot_simple(filtered):
     plt.show()
 
 
-####################################################################
-project_no=input("please input your project No. such as hdr6301:")
-in_project=project_no.strip().lower()
+####################################
+#            main
+####################################
+default_project='hdr6301'
+project_no=input("please input your project No. such as "+default_project+":")
+if project_no:
+    in_project=project_no.strip().lower()
+else:
+    in_project=default_project
 
-print('geting data from CQ....and save to file'+in_project)
+from_remote=input("get from remote (Y/N):")
+if from_remote=='Y' or from_remote=='y' or from_remote.strip()=='':
+    remote = '1'
+else:
+    remote = '0'
 
-#frfilepath=get_data(in_project)
-frfilepath="FR_table_hdr6301"
+if remote == '1':
+    frfilepath=get_data(in_project)
+else:
+    frfilepath="FR_table_"+in_project
+
+
 FRs = pd.read_table(frfilepath)
 
 clean_data(FRs)
