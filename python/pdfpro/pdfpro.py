@@ -1,4 +1,6 @@
 # encoding:utf-8
+import getopt
+import sys
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 def filebasicinfo(file):
@@ -86,13 +88,53 @@ def mergePdf(inFileList, outFile):
         # 最后,统一写入到输出文件中
         pdfFileWriter.write(open(outFile, 'wb'))
 
-myreport = 'data/MyFeeReport.pdf'
-splited='data/aftersplit.pdf'
-merged='data/aftermerge.pdf'
+def test_split():
+    myreport = 'data/MyFeeReport.pdf'
+    splited='data/aftersplit.pdf'
+    # merged='data/aftermerge.pdf'
 
 
-filebasicinfo(myreport)
-splitPdf(myreport, splited,5,10)
+    # filebasicinfo(myreport)
+    splitPdf(myreport, splited,5,10)
 
-mergelist = ['data/hetong1.pdf','data/hetong2.pdf',splited]
-mergePdf(mergelist,merged)
+    # mergelist = ['data/hetong1.pdf','data/hetong2.pdf',splited]
+    # mergePdf(mergelist,merged)
+
+
+if __name__ == '__main__':
+    opts,args = getopt.getopt(sys.argv[1:],'-h-m-s:-v-t',['help','merge','split','version'])
+
+    for opt_name,opt_value in opts:
+        if opt_name in ('-h','--help'):
+            print('[OPTION]... [FILE]')
+            print("-m  --merge merges the files")
+            print("-s --split {startpage:endpage} split the file from start to end")        
+            sys.exit()
+        if opt_name in ('-v','--version'):
+            print("[*] pdf split/merge pro Version is 0.9, Yangdingfang cook")
+            sys.exit()
+        if opt_name in ('-m','--merge'):
+            print('merge files',args)
+            merged='data/aftermerge.pdf'
+            print('wring to data/aftermerge.pdf')
+            mergePdf(args,merged)
+            sys.exit()
+        if opt_name in ('-s','--split'):
+            print('split files to data/aftersplit.pdf ',args)
+            page=opt_value
+            page_range=page.split(':')
+            print(page_range[0], page_range[1])
+            splited='data/aftersplit.pdf'       
+        # splitPdf(myreport, splited,5,10)
+            #args is list.
+            infile=args[0]  
+            splitPdf(infile, splited, int(page_range[0]), int(page_range[1]))
+            sys.exit()    
+        if opt_name in ('-t'):
+            test_split()
+            sys.exit()
+        print('complete')
+        
+
+
+
