@@ -1,6 +1,7 @@
 # encoding:utf-8
 import getopt
 import sys
+import os
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 def filebasicinfo(file):
@@ -93,10 +94,21 @@ def test_split():
     splited='data/aftersplit.pdf'
     splitPdf(myreport, splited,5,10)
 
+def init_env():
+    dirs = 'data'
+    if not os.path.exists(dirs):
+        print('create data dir')
+        os.makedirs(dirs)
+    else:
+        print('env ready')
+
+
 
 if __name__ == '__main__':
-    opts,args = getopt.getopt(sys.argv[1:],'-h-m-s:-v-t',['help','merge','split','version'])
 
+    init_env()
+    
+    opts,args = getopt.getopt(sys.argv[1:],'-h-m-s:-v-t',['help','merge','split','version','tes'])
     for opt_name,opt_value in opts:
         if opt_name in ('-h','--help'):
             print('[OPTION]... [FILE]')
@@ -111,7 +123,7 @@ if __name__ == '__main__':
         if opt_name in ('-m','--merge'):
             print('merge files',args)
             merged='data/aftermerge.pdf'
-            print('wring to data/aftermerge.pdf')
+            print('wring to',merged)
             mergePdf(args,merged)
             sys.exit()
 
